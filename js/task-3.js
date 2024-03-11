@@ -1,35 +1,14 @@
-// Задача 3. Конструктор рядків
-class StringBuilder{
-    #value;
-    constructor(initialValue) {
-        this.#value = initialValue;
-    }
+// Завдання 3
 
-    getValue() {
-        return this.#value;
-    }
+// Напиши скрипт, який під час набору тексту в інпуті input#name-input (подія input) підставляє його поточне значення в span#name-output як ім’я для привітання. 
+// Обов’язково очищай значення в інпуті по краях від пробілів.Якщо інпут порожній або містить лише пробіли, то замість імені у спан має підставлятися рядок "Anonymous".
 
-    padEnd(str) {
-        this.#value = this.#value + str;
-    }
-
-    padStart(str) {
-        this.#value = str + this.#value;
-    }
-
-    padBoth(str) {
-        this.#value = str + this.#value + str;
-    }
-}
-
-
-
-
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
+const textInput = document.querySelector("#name-input");
+const textOutput = document.querySelector("#name-output");
+textInput.addEventListener("input", (event) => {
+    // event.preventDefault();
+    if (event.target.value.trim() !== "" ) {
+        textOutput.textContent = event.target.value.trim();
+    } 
+  
+} )

@@ -1,33 +1,17 @@
+// З використанням властивостей і методів DOM-елементів, напиши скрипт, який:
 
-// Задача 1. Акаунт користувача
+//1. Порахує й виведе в консоль кількість категорій в ul#categories, тобто елементів li.item.
+//2. Для кожного елемента li.item у списку ul#categories знайде й виведе в консоль текст заголовка елемента (тегу <h2>) і кількість елементів у категорії (усіх <li>, вкладених у нього).
 
-const customer = {
-  username: "Mango",
-  balance: 24000,
-  discount: 0.1,
-  orders: ["Burger", "Pizza", "Salad"],
-  // Change code below this line
-  getBalance() {
-    return this.balance;
-  },
-  getDiscount() {
-    return this.discount;
-  },
-  setDiscount(value) {
-    this.discount = value;
-  },
-  getOrders() {
-    return this.orders;
-  },
-  addOrder(cost, order) {
-    this.balance -= cost - cost * this.discount;
-    this.orders.push(order);
-  },
-  // Change code above this line
-};
+const categories = document.querySelectorAll('.item');
+console.log(`Number od categories: ${categories.length}`);
 
-customer.setDiscount(0.15);
-console.log(customer.getDiscount()); // 0.15
-customer.addOrder(5000, "Steak");
-console.log(customer.getBalance()); // 19750
-console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+
+categories.forEach((category) => {
+    const header = category.firstElementChild.textContent;
+    const elements = category.lastElementChild.childElementCount;
+
+    console.log(`Category: ${header}`);
+    console.log(`Elements: ${elements}`);
+
+});
