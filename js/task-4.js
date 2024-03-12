@@ -6,10 +6,6 @@
 const form = document.querySelector(".login-form");
 
 form.addEventListener("submit", handleSubmit);
-    
-// const firstField = input.getAttribute("name")
-
-
 
 function handleSubmit(event) {
     event.preventDefault();

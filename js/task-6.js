@@ -10,7 +10,7 @@ function getRandomHexColor() {
 }
 
 
-const input  = document.querySelector('input');
+const amountInput  = document.querySelector('input');
 const createButton = document.querySelector('button[data-create]');
 const destroyButton = document.querySelector('button[data-destroy]');
 const boxes = document.querySelector("#boxes");
@@ -18,36 +18,36 @@ const boxes = document.querySelector("#boxes");
 
 createButton.addEventListener("click", createMarkup);
 destroyButton.addEventListener("click", destroyBoxes);
-let height = 30;
-let width = 30;
+
 const step = 10;
 
 
 
 function createMarkup() {
 
-  if (input.value  < 0 || input.value > 100) {
-    console.log('error');
+  if (amountInput.value  < 1 || amountInput.value > 100) {
+     alert('Будь ласка, введіть число від 1 до 100.')
     return;
   }
-  createBoxes(input.value);
+  createBoxes(amountInput.value);
 
 }
 
   
- function createBoxes(amount) {
-    for (let i = 1; i <= amount; i++)
+function createBoxes(amount) {
+    destroyBoxes();
+    for (let i = 0; i < amount; i++)
     {
-       let box = document.createElement("div");
-       box.style.height = `${height}px`;
-       box.style.width = `${width}px`;
+
+      const size = 30 + step * i;
+      let box = document.createElement("div");
+      box.style.height = `${size}px`;
+      box.style.width = `${size}px`;
       box.style.backgroundColor = `${getRandomHexColor()}`;
       boxes.append(box);
 
-      height = height+step;
-      width = width+step;
    }
-   input.value = "";
+   amountInput.value = "";
   }
 
 
